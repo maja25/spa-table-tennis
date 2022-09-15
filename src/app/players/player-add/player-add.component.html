@@ -1,0 +1,37 @@
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+<mat-form-field appearance="fill">
+  <mat-label>First Name</mat-label>
+  <input
+    matInput
+    type="text"
+    id="firstName"
+    formControlName="firstName"
+    required
+    placeholder="Enter first name of the player"
+  />
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Last Name</mat-label>
+  <input
+    matInput
+    type="text"
+    id="lastName"
+    formControlName="lastName"
+    required
+    placeholder="Enter last name of the player"
+  />
+</mat-form-field>
+
+  <button
+    matButton
+    type="submit"
+    [disabled]="!playerForm.valid"
+    class="btn btn-success"
+  >
+    Save
+  </button>
+  <button matButton type="button" class="btn btn-danger" (click)="onCancel()">
+    Cancel
+  </button>
+
+</form>

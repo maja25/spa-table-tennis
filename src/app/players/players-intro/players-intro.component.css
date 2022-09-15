@@ -1,0 +1,14 @@
+h3 {
+    display: flex;
+    padding-top: 15px;
+    justify-content: center;
+}
+
+.players-list, .add-new-player {
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-player {
+    padding-top: 18px;
+}

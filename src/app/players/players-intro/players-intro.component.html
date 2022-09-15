@@ -1,0 +1,20 @@
+<h3>List of all players in order of total sets won</h3>
+<hr />
+<div class="players-list">
+  <div *ngIf="noItems"><h3>No players found.</h3></div>
+  <mat-action-list role="list">
+    <button
+      mat-list-item
+      *ngFor="let player of players$ | async"
+      routerLink="{{ player.id }}"
+    >
+      {{ player.firstName + " " + player.lastName }}
+    </button>
+  </mat-action-list>
+</div>
+
+<div class="add-new-player">
+  <button mat-button class="btn btn-success" routerLink="/addPlayer">
+    Add new player
+  </button>
+</div>

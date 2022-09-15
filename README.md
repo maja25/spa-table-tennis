@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+TO DO:
+    1. logika za sortiranje igraca (pobjede)
+    2. add new player button -> forma dodana, ali vrijednosti nestanu iz array-a nakon refresha (dodati event)
+    3. matches page ne radi
+    4. overview svake igre
+    5. add new match button -> forma

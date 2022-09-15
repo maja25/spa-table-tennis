@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+}
+
+button {
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }

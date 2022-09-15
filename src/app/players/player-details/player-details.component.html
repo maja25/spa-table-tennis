@@ -1,0 +1,19 @@
+<h3>Overview of player {{ player.firstName + " " + player.lastName }}</h3>
+<hr />
+<div class="player-details">
+  <mat-list role="list">
+    <mat-list-item
+      >Name: {{ player.firstName + " " + player.lastName }}</mat-list-item
+    >
+    <mat-list-item>Player ID: {{ player.id }}</mat-list-item>
+    <mat-list-item> Scores won in the game: </mat-list-item>
+    <div class="sets" style="padding-left: 45px">
+      <h5>First set: {{ player.scores.firstSet }}</h5>
+      <h5>Second set: {{ player.scores.secondSet }}</h5>
+      <h5>Third set: {{ player.scores.thirdSet }}</h5>
+      <h5>Fourth set: {{ player.scores.fourthSet }}</h5>
+      <h5>Fift set: {{ player.scores.fiftSet }}</h5>
+    </div>
+    <mat-list-item>Wins in the game: {{ player.wins }}</mat-list-item>
+  </mat-list>
+</div>

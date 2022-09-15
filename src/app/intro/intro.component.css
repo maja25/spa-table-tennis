@@ -1,0 +1,12 @@
+p {
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: large;
+}
+
+.intro-text {
+    display: flex;
+    justify-content: center;
+    width: 600px;
+}

@@ -1,8 +1,11 @@
-h4 {
-    padding-left: 25px;
+h3 {
+    display: flex;
+    padding-top: 15px;
+    justify-content: center;
+    
 }
 
-h3 {
-    padding-top: 15px;
-    padding-left: 10px;
+.player-details {
+    display: flex;
+    justify-content: center;
 }

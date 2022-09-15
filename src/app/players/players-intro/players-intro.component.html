@@ -1,8 +1,8 @@
 <h3>List of all players in order of total sets won</h3>
 <hr />
 <div class="players-list">
-  <div *ngIf="noItems"><h3>No players found.</h3></div>
-  <mat-action-list role="list">
+  <ng-template #noPlayers><h3>No players found.</h3></ng-template>
+  <mat-action-list role="list" *ngIf="players$ | async as players; else noPlayers">
     <button
       mat-list-item
       *ngFor="let player of players$ | async"

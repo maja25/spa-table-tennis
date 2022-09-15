@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Player } from '../player.model';
 import { PlayersService } from '../players.service';
@@ -8,16 +8,11 @@ import { PlayersService } from '../players.service';
   templateUrl: './players-intro.component.html',
   styleUrls: ['./players-intro.component.css']
 })
-export class PlayersIntroComponent implements OnInit {
+export class PlayersIntroComponent {
 
   players$: Observable<Player[]> = this.playersService.players$;
-  noItems: boolean = false;
 
   constructor(private playersService: PlayersService) { this.sortPlayers() }
-
-  ngOnInit() {
-    this.players$.subscribe(player => { if (!player?.length) { this.noItems = !this.noItems }})
-  }
 
   sortPlayers() {
     console.log(this.players$);

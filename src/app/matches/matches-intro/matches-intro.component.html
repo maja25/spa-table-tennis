@@ -2,11 +2,11 @@
 <hr />
 
 <div class="matches-list">
-  <div *ngIf="noItems"><h3>No matches found.</h3></div>
-  <mat-action-list role="list">
+  <ng-template #noMatches><h3>No matches found.</h3></ng-template>
+  <mat-action-list *ngIf="matches$ | async as matches; else noMatches" role="list">
     <button
       mat-list-item
-      *ngFor="let match of matches$ | async"
+      *ngFor="let match of matches"
       routerLink="{{ match.name }}"
     >
       {{ match.name }}

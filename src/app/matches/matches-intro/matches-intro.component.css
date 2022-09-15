@@ -1,0 +1,14 @@
+h3 {
+    display: flex;
+    padding-top: 15px;
+    justify-content: center;
+}
+
+.matches-list, .add-new-match {
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-match {
+    padding-top: 18px;
+}

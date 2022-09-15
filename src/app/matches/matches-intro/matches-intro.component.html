@@ -1,0 +1,19 @@
+<h3>List of all played matches</h3>
+<hr />
+
+<div class="matches-list">
+  <div *ngIf="noItems"><h3>No matches found.</h3></div>
+  <mat-action-list role="list">
+    <button
+      mat-list-item
+      *ngFor="let match of matches$ | async"
+      routerLink="{{ match.name }}"
+    >
+      {{ match.name }}
+    </button>
+  </mat-action-list>
+</div>
+
+<div class="add-new-match">
+  <button class="btn btn-success" routerLink="/addMatch">Add new match</button>
+</div>

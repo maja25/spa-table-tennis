@@ -15,6 +15,7 @@
     <input type="text"
            placeholder="Pick a player"
            matInput
+           formControlName="firstPlayer"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let player of players$ | async | playerToFullName"  [value]="player">
@@ -26,6 +27,7 @@
     <mat-label>Second Player</mat-label>
     <input type="text"
            placeholder="Pick a player"
+           formControlName="secondPlayer"
            matInput
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
@@ -35,16 +37,16 @@
     </mat-autocomplete>
   </mat-form-field>
   <button
-  matButton
-  type="submit"
-  [disabled]="!matchesForm.valid"
-  class="btn btn-success"
->
-  Save
-</button>
-<button matButton type="button" class="btn btn-danger" (click)="onCancel()">
-  Cancel
-</button>
+  color="primary"
+    mat-raised-button
+    type="submit"
+    [disabled]="!matchesForm.valid"
+  >
+    Save
+  </button>
+  <button mat-raised-button type="button" color="warn" (click)="navigateToList()">
+    Cancel
+  </button>
 
 </form>
 

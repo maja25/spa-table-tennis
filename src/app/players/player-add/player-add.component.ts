@@ -12,11 +12,10 @@ import { PlayersService } from '../players.service';
 export class PlayerAddComponent implements OnInit {
   playerForm: FormGroup;
   id: number = -1;
-  players: Player[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private ps: PlayersService,
+    private playersService: PlayersService,
     private router: Router
   ) {
     let firstName = '';
@@ -33,25 +32,13 @@ export class PlayerAddComponent implements OnInit {
   onSubmit() {
     const newPlayer = new Player(
       this.playerForm.value['firstName'],
-      this.playerForm.value['lastName'],
-      this.generateGuid(),
-      { firstSet: [], secondSet: [], thirdSet: [], fourthSet: [], fiftSet: [] },
-      []
+      this.playerForm.value['lastName']
     );
-    this.ps.addPlayer(newPlayer);
-    this.onCancel();
+    this.playersService.addPlayer(newPlayer);
+    this.navigateToList();
   }
 
-  onCancel() {
+  navigateToList() {
     this.router.navigate(['../players'], { relativeTo: this.route });
-  }
-
-  generateGuid(): string {
-    return 'x'.replace(/[x]/g, function (c) {
-      var r = (Math.random() * 16) | 0,
-        v = c == 'x' ? r : (r & 0x3) | 0x8;
-      console.log('guid ', v);
-      return v.toString(16);
-    });
   }
 }

@@ -23,14 +23,14 @@
 </mat-form-field>
 
   <button
-    matButton
+  color="primary"
+    mat-raised-button
     type="submit"
     [disabled]="!playerForm.valid"
-    class="btn btn-success"
   >
     Save
   </button>
-  <button matButton type="button" class="btn btn-danger" (click)="onCancel()">
+  <button mat-raised-button type="button" color="warn" (click)="navigateToList()">
     Cancel
   </button>
 

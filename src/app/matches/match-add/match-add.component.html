@@ -22,7 +22,12 @@
     />
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option
-        *ngFor="let player of players$ | async | playerToFullName"
+        *ngFor="
+          let player of players$
+            | async
+            | playerToFullName
+            | excludePlayer: secondPlayer.value
+        "
         [value]="player"
       >
         {{ player }}
@@ -42,7 +47,12 @@
     />
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option
-        *ngFor="let player of players$ | async | playerToFullName"
+        *ngFor="
+          let player of players$
+            | async
+            | playerToFullName
+            | excludePlayer: firstPlayer.value
+        "
         [value]="player"
       >
         {{ player }}

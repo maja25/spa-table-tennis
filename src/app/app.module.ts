@@ -26,6 +26,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { PlayerToFullNamePipe } from './matches/player-to-full-name.pipe';
 import { SetsComponent } from './matches/sets/sets.component';
 import { MatchesService } from './matches/matches.service';
+import { ExcludePlayerPipe } from './matches/exclude-player.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatchesService } from './matches/matches.service';
     MatchDetailsComponent,
     MatchAddComponent,
     PlayerToFullNamePipe,
-    SetsComponent
+    SetsComponent,
+    ExcludePlayerPipe
   ],
   imports: [
     BrowserModule,

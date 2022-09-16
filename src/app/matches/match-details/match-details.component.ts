@@ -15,6 +15,7 @@ export class MatchDetailsComponent implements OnInit {
   match: Match = <Match>{};
   player1: Player = <Player>{};
   player2: Player = <Player>{};
+  winner: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class MatchDetailsComponent implements OnInit {
       this.player2 = this.playersService.getPlayerWithName(
         String(this.match.secondPlayer)
       )!;
+      this.winner = this.player1.scores?.won ? `${this.player1.firstName} ${this.player1.lastName}` : `${this.player2.firstName} ${this.player2.lastName}`;
     });
   }
 }

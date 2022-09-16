@@ -7,13 +7,13 @@ import { Player } from './player.model';
 @Injectable()
 export class PlayersService {
   private players: Player[] = [
-    new Player('Maja', 'Nekic', '0'),
+    new Player('Ivo', 'Ivic', '0'),
+    new Player('Antun', 'Tun', '2'),
     new Player('Ana', 'Anic', '1'),
-    new Player('Antun', 'Nesto', '2'),
   ];
 
   private playersSubject = new BehaviorSubject<Player[]>(this.players);
-  public players$ = this.playersSubject.asObservable().pipe(map(players => players.sort((a, b) => a.wins - b.wins)));
+  public players$ = this.playersSubject.asObservable().pipe(map(players => players.sort((a, b) => b.wins - a.wins)));
 
   getPlayers() {
     return this.players;

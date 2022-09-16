@@ -10,20 +10,15 @@
     <div class="sets" style="padding-left: 45px">
       <h4>{{ player1.firstName + " " + player1.lastName }}</h4>
       <h5 *ngFor="let set of player1.scores?.sets; index as i">
-        set{{ i }}: {{ set }}
+        set {{ i }}: {{ set }}
       </h5>
     </div>
     <div class="sets" style="padding-left: 45px">
       <h4>{{ player2.firstName + " " + player2.lastName }}</h4>
       <h5 *ngFor="let set of player2.scores?.sets; index as i">
-        set{{ i }}: {{ set }}
+        set {{ i }}: {{ set }}
       </h5>
     </div>
-    <mat-list-item>Wins in the game: {{ player1.wins }}</mat-list-item>
-
-    <!-- <div class="sets" style="padding-left: 45px">
-          <h5 *ngFor="let set of player.scores?.sets; index as i">set{{i}}: {{set}}</h5>
-      </div>
-      <mat-list-item>Wins in the game: {{ player.wins }}</mat-list-item> -->
+    <mat-list-item>Winner: {{ winner }}</mat-list-item>
   </mat-list>
 </div>

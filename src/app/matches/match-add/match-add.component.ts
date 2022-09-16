@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Player } from 'src/app/players/player.model';
+import { Player, Scores } from 'src/app/players/player.model';
 import { PlayersService } from 'src/app/players/players.service';
-import { Match } from '../matches.model';
+import { Match, PlayerScores } from '../matches.model';
 import { MatchesService } from '../matches.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class MatchAddComponent {
   matchesForm: FormGroup;
   id: number = -1;
   public sets: number = 5;
-  players$: Observable<Player[]> = this.playersService.players$;
+  players$: Observable<Player[] | null> = this.playersService.players$;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,12 +26,6 @@ export class MatchAddComponent {
     let matchName = '';
     let firstPlayer = '';
     let secondPlayer = '';
-    let p1s1 = '';
-    let p2s1 = '';
-    let p1s2 = '';
-    let p2s2 = '';
-    let p1s3 = '';
-    let p2s3 = '';
 
     this.matchesForm = new FormGroup({
       name: new FormControl(matchName, Validators.required),
@@ -40,18 +34,42 @@ export class MatchAddComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit(form: FormGroup) {
     const newMatch = new Match(
-      this.matchesForm.value['name'],
-      this.matchesForm.value['firstPlayer'],
-      this.matchesForm.value['secondPlayer']
+      form.get('name')?.value,
+      form.get('firstPlayer')?.value,
+      form.get('secondPlayer')?.value
     );
     this.matchesService.addMatch(newMatch);
-    console.log(newMatch);
-    this.onCancel();
+    const scores = this.getScores(newMatch.name, form);
+    this.playersService.updatePlayers(scores);
+    this.navigateToList();
   }
 
-  onCancel() {
+  navigateToList() {
     this.router.navigate(['../matches'], { relativeTo: this.route });
+  }
+
+  private getScores(matchName: string, form: FormGroup) {
+    const player1Scores: Scores = {
+      matchName: matchName,
+      sets: this.getScoresFor(1, form),
+    };
+    const player2Scores: Scores = {
+      matchName: matchName,
+      sets: this.getScoresFor(2, form),
+    };
+    return [
+      new PlayerScores(form.get('firstPlayer')?.value, player1Scores),
+      new PlayerScores(form.get('secondPlayer')?.value, player2Scores),
+    ];
+  }
+
+  private getScoresFor(player: number, form: FormGroup): number[] {
+    const scores = [];
+    for (let i = 0; i < this.sets; i++) {
+      scores.push(form.get(`player${player}_set${i}`)?.value);
+    }
+    return scores;
   }
 }

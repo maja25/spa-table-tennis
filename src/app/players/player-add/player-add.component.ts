@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from '../player.model';
@@ -9,7 +9,7 @@ import { PlayersService } from '../players.service';
   templateUrl: './player-add.component.html',
   styleUrls: ['./player-add.component.css'],
 })
-export class PlayerAddComponent implements OnInit {
+export class PlayerAddComponent {
   playerForm: FormGroup;
   id: number = -1;
 
@@ -27,12 +27,10 @@ export class PlayerAddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  onSubmit() {
+  onSubmit(form: FormGroup) {
     const newPlayer = new Player(
-      this.playerForm.value['firstName'],
-      this.playerForm.value['lastName']
+      form.get('firstName')?.value,
+      form.get('lastName')?.value
     );
     this.playersService.addPlayer(newPlayer);
     this.navigateToList();

@@ -1,4 +1,4 @@
-<form [formGroup]="matchesForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="matchesForm" (ngSubmit)="onSubmit(matchesForm)">
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
     <input
@@ -12,47 +12,58 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>First Player</mat-label>
-    <input type="text"
-           placeholder="Pick a player"
-           matInput
-           formControlName="firstPlayer"
-           [matAutocomplete]="auto">
+    <input
+      type="text"
+      formControlName="firstPlayer"
+      placeholder="Pick a player"
+      matInput
+      [matAutocomplete]="auto"
+      #firstPlayer
+    />
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let player of players$ | async | playerToFullName"  [value]="player">
+      <mat-option
+        *ngFor="let player of players$ | async | playerToFullName"
+        [value]="player"
+      >
         {{ player }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <app-sets [player]="'player1'" [formGroup]="matchesForm"></app-sets>
   <mat-form-field appearance="fill">
     <mat-label>Second Player</mat-label>
-    <input type="text"
-           placeholder="Pick a player"
-           formControlName="secondPlayer"
-           matInput
-           [matAutocomplete]="auto">
+    <input
+      type="text"
+      formControlName="secondPlayer"
+      placeholder="Pick a player"
+      matInput
+      [matAutocomplete]="auto"
+      #secondPlayer
+    />
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let player of players$ | async | playerToFullName"  [value]="player">
+      <mat-option
+        *ngFor="let player of players$ | async | playerToFullName"
+        [value]="player"
+      >
         {{ player }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <app-sets [player]="'player2'" [formGroup]="matchesForm"></app-sets>
   <button
-  color="primary"
+    color="primary"
     mat-raised-button
     type="submit"
     [disabled]="!matchesForm.valid"
   >
     Save
   </button>
-  <button mat-raised-button type="button" color="warn" (click)="navigateToList()">
+  <button
+    mat-raised-button
+    type="button"
+    color="warn"
+    (click)="navigateToList()"
+  >
     Cancel
   </button>
-
 </form>
-
-
-
-
-
-
-

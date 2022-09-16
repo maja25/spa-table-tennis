@@ -1,8 +1,29 @@
-<h3>Overview of  match</h3>
-<hr>
-<!-- <h4 class="list-group-item-heading">Name: {{ match.name }}</h4>
-<h4 class="list-group-item-text">First player: {{ match.firstPlayer }}</h4>
-<h4 class="list-group-item-text">Second player: {{ match.secondPlayer }}</h4>
-<h4 class="list-group-item-text">
-  Scores won in the game: {{ player.scores }}
-</h4> -->
+<h3>Overview of match</h3>
+<hr />
+<div class="match-details">
+  <mat-list role="list">
+    <mat-list-item>Name of the match: {{ match.name }}</mat-list-item>
+    <mat-list-item>First Player: {{ match.firstPlayer }}</mat-list-item>
+    <mat-list-item>Second Player: {{ match.secondPlayer }}</mat-list-item>
+    <mat-list-item> Scores won in the game: </mat-list-item>
+
+    <div class="sets" style="padding-left: 45px">
+      <h4>{{ player1.firstName + " " + player1.lastName }}</h4>
+      <h5 *ngFor="let set of player1.scores?.sets; index as i">
+        set{{ i }}: {{ set }}
+      </h5>
+    </div>
+    <div class="sets" style="padding-left: 45px">
+      <h4>{{ player2.firstName + " " + player2.lastName }}</h4>
+      <h5 *ngFor="let set of player2.scores?.sets; index as i">
+        set{{ i }}: {{ set }}
+      </h5>
+    </div>
+    <mat-list-item>Wins in the game: {{ player1.wins }}</mat-list-item>
+
+    <!-- <div class="sets" style="padding-left: 45px">
+          <h5 *ngFor="let set of player.scores?.sets; index as i">set{{i}}: {{set}}</h5>
+      </div>
+      <mat-list-item>Wins in the game: {{ player.wins }}</mat-list-item> -->
+  </mat-list>
+</div>

@@ -1,24 +1,24 @@
 #scores input {
-    width: 100px;
-    margin-right: 5px;
-    margin-left: 10px;
+  width: 100px;
+  margin-right: 5px;
+  margin-left: 10px;
 }
 
 .sets {
-    display:flex; 
-    padding-bottom: 5px;
+  display: flex;
+  padding-bottom: 5px;
 }
 
 .row {
-    padding-left: 15px;
-    margin-top: 15px;
+  padding-left: 15px;
+  margin-top: 15px;
 }
 
 input {
-    width: 300px;
+  width: 300px;
 }
 
 button {
-    margin-top: 20px;
-    margin-right: 5px;
+  margin-top: 20px;
+  margin-right: 5px;
 }

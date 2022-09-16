@@ -3,7 +3,10 @@
 
 <div class="matches-list">
   <ng-template #noMatches><h3>No matches found.</h3></ng-template>
-  <mat-action-list *ngIf="matches$ | async as matches; else noMatches" role="list">
+  <mat-action-list
+    *ngIf="matches$ | async as matches; else noMatches"
+    role="list"
+  >
     <button
       mat-list-item
       *ngFor="let match of matches"
@@ -15,5 +18,7 @@
 </div>
 
 <div class="add-new-match">
-  <button mat-raised-button color="primary" routerLink="/addMatch">Add new match</button>
+  <button mat-raised-button color="primary" routerLink="/addMatch">
+    Add new match
+  </button>
 </div>

@@ -10,20 +10,9 @@ import { PlayersService } from '../players.service';
 })
 export class PlayersIntroComponent {
 
-  players$: Observable<Player[]> = this.playersService.players$;
+  players$: Observable<Player[] | null> = this.playersService.players$;
 
-  constructor(private playersService: PlayersService) { this.sortPlayers() }
-
-  sortPlayers() {
-    console.log(this.players$);
-    this.players$.forEach((playerObject) => {
-      playerObject.forEach((player) => {
-        const nesto = player.wins.sort((a, b) => a - b)
-        console.log('player ',nesto);
-      })
-    })
-  
-  }
+  constructor(private playersService: PlayersService) {  }
 
   }
 

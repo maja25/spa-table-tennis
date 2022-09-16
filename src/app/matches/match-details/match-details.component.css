@@ -1,11 +1,10 @@
 h3 {
-    display: flex;
-    padding-top: 15px;
-    justify-content: center;
-    
+  display: flex;
+  padding-top: 15px;
+  justify-content: center;
 }
 
-.player-details {
-    display: flex;
-    justify-content: center;
+.match-details {
+  display: flex;
+  justify-content: center;
 }

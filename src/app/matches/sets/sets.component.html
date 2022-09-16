@@ -1,20 +1,13 @@
-<!-- <form>
-<mat-form-field appearance="fill"> -->
-    <mat-label>First player</mat-label>
-    <input
-      matInput
-      type="number"
-      formControlName="firstPlayer"
-      required
-    />
-  <!-- </mat-form-field> -->
-  <!-- <mat-form-field appearance="fill"> -->
-    <mat-label>Second player</mat-label>
-    <input
-      matInput
-      type="number"
-      formControlName="firstPlayer"
-      required
-    />
-  <!-- </mat-form-field>
-</form> -->
+<form [formGroup]="formGroup">
+  <ng-container *ngFor="let set of matchSets; index as i">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ set }}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="{{ player }}_set{{ i }}"
+        required
+      />
+    </mat-form-field>
+  </ng-container>
+</form>
